@@ -12,7 +12,6 @@ export class UsersService {
             const isEmailExist = await this.prisma.user.findFirst({
                 where: {
                     email: body.email,
-                    isDeleted: false
                 }
             })
 
