@@ -1,23 +1,24 @@
 import {Controller, Get, Post, Patch, Body, Param, Delete} from '@nestjs/common';
 import {UsersService} from "./users.service";
+import {createUserDto, updateUserDto, updateUsersStatusDto} from "../dtos/userDto";
 
 @Controller('cm-project')
 export class UsersController {
    constructor(private readonly service: UsersService) {}
 
     @Post('users')
-    createUser(@Body() body: any){
-       return this.service.createUser(body)
+    createUser(@Body() createUser: createUserDto){
+       return this.service.createUser(createUser)
     }
 
     @Patch('users')
-    updateUsersInfos(@Body() body: any){
-       return this.service.updateUsersInfo(body)
+    updateUsersInfos(@Body() updateUser: updateUserDto){
+       return this.service.updateUsersInfo(updateUser)
     }
 
     @Delete('users')
-    deleteUser(@Body() body: any){
-       return this.service.deleteUser(body)
+    deleteUser(@Body() updateUsersStatus: updateUsersStatusDto){
+       return this.service.deleteUser(updateUsersStatus)
     }
 
     @Get('users')
